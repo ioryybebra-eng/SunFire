@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SunFire Network | CS2 Servers & Art</title>
+    <style>
+        /* Стиль и цвета в стиле CS2 (Темный графит и Неоновый оранжевый) */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            scroll-behavior: smooth;
+        }
+        body {
+            background-color: #12131a;
+            color: #eeeeee;
+            line-height: 1.6;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        header {
+            background-color: #1a1c24;
+            padding: 20px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 3px solid #ff6b00; /* Фирменный оранжевый SunFire */
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+        }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 26px;
+            font-weight: 900;
+            color: #ff6b00;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 0 10px rgba(255, 107, 0, 0.3);
+        }
+        .logo span {
+            color: #fff;
+        }
+        .nav-menu a {
+            margin-left: 25px;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+        .nav-menu a:hover {
+            color: #ff6b00;
+        }
+
+        /* Главный баннер (Hero) */
+        .hero {
+            background: linear-gradient(rgba(18, 19, 26, 0.8), rgba(18, 19, 26, 1)), 
+                        url('https://unsplash.com') no-repeat center center/cover;
+            padding: 120px 20px;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 54px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            color: #fff;
+            letter-spacing: 1px;
+        }
+        .hero h1 span {
+            color: #ff6b00;
+        }
+        .hero p {
+            font-size: 20px;
+            color: #cccccc;
+            margin-bottom: 35px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* Кнопки */
+        .btn {
+            background: linear-gradient(135deg, #ff6b00, #e05300);
+            color: #fff;
+            padding: 14px 35px;
+            border: none;
+            font-weight: bold;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+            text-transform: uppercase;
+            display: inline-block;
+            box-shadow: 0 4px 15px rgba(255, 107, 0, 0.4);
+        }
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 107, 0, 0.6);
+        }
+
+        /* Секции */
+        .section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 20px 40px;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 50px;
+            text-transform: uppercase;
+            position: relative;
+            color: #fff;
+        }
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: #ff6b00;
+            margin: 15px auto 0;
+            border-radius: 2px;
+        }
+
+        /* Карточки серверов и услуг */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+        .card {
+            background-color: #1a1c24;
+            border-radius: 8px;
+            padding: 30px;
+            border-top: 4px solid #ff6b00;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+            transition: transform 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .card h3 {
+            margin-bottom: 15px;
+            color: #fff;
+            font-size: 22px;
+        }
+        .ip-block {
+            background-color: #111217;
+            padding: 12px 15px;
+            border-radius: 5px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 20px 0;
+            border: 1px solid #2d303e;
+        }
+        .ip-text {
+            color: #ff6b00;
+            font-weight: bold;
+        }
+        .copy-btn {
+            background: none;
+            border: 1px solid #ff6b00;
+            color: #ff6b00;
+            padding: 6px 12px;
+            cursor: pointer;
+            border-radius: 4px;
+            font-size: 13px;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        .copy-btn:hover {
+            background-color: #ff6b00;
+            color: #fff;
+        }
+
+        /* Сетка для продажи Артов */
+        .art-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        .art-item {
+            background-color: #1a1c24;
+            border-radius: 8px;
+            overflow: hidden;
+            text-align: center;
+            padding-bottom: 25px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+            border: 1px solid #2d303e;
+        }
+        .art-item img {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+            border-bottom: 3px solid #ff6b00;
+        }
+        .art-item h3 {
+            margin: 20px 0 5px;
+            color: #fff;
+            font-size: 20px;
+        }
+        .price {
+            color: #ff6b00;
+            font-weight: 800;
+            font-size: 22px;
+            margin-bottom: 20px;
+        }
+
+        /* Подвал */
+        footer {
+            background-color: #1a1c24;
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 80px;
+            border-top: 2px solid #2d303e;
+            color: #666;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Шапка сайта -->
+    <header>
+        <div class="nav-container">
+            <div class="logo">SunFire <span>Network</span></div>
+            <nav class="nav-menu">
+                <a href="#servers">Серверы</a>
+                <a href="#art">Заказать Арт</a>
+                <a href="#help">Помощь / Обучение</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Главный экран -->
+    <section class="hero">
+        <h1>Игровой проект <span>SunFire</span></h1>
+        <p>Топовые паблики в CS2 с отличным пингом, кастомные аватарки на заказ от лучших дизайнеров и профессиональная помощь по игре.</p>
+        <a href="#servers" class="btn">Подключиться к серверам</a>
+    </section>
+
+    <!-- Раздел Серверов -->
+    <section class="section" id="servers">
+        <h2 class="section-title">Наши Серверы CS2</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>🔥 SunFire | МЯСОРУБКА [Public #1]</h3>
+                <p>Классический паблик. Мощный хостинг, 0 лагов, адекватные админы и постоянные розыгрыши скинов.</p>
+                <div class="ip-block">
+                    <span class="ip-text">46.174.52.12:27015</span>
+                    <button class="copy-btn" onclick="copyIP('46.174.52.12:27015', this)">Копировать</button>
+                </div>
+                <p>Статус: <span style="color:#00ff00; font-weight: bold;">Онлайн 🟢</span></p>
+            </div>
+            <div class="card">
+                <h3>🎯 SunFire | AWP Only [Mirage 24/7]</h3>
+                <p>Идеальное место, чтобы прокачать свой зум и реакцию. Уникальные кастомные скины на пушки для всех игроков.</p>
+                <div class="ip-block">
+                    <span class="ip-text">46.174.52.99:27015</span>
+                    <button class="copy-btn" onclick="copyIP('46.174.52.99:27015', this)">Копировать</button>
+                </div>
+                <p>Статус: <span style="color:#00ff00; font-weight: bold;">Онлайн 🟢</span></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Раздел Артов -->
+    <section class="section" id="art">
+        <h2 class="section-title">Аватарки & Арты по CS2</h2>
+        <div class="art-grid">
+            <div class="art-item">
+                <img src="https://unsplash.com" alt="Steam Avatar">
+                <h3>Steam Аватарка</h3>
+                <div class="price">от 300 руб.</div>
+                <button class="btn" onclick="orderProduct('Аватарка для Steam')">Купить</button>
+            </div>
+            <div class="art-item">
+                <img src="https://unsplash.com" alt="Team Logo">
+                <h3>Логотип Команды</h3>
+                <div class="price">от 800 руб.</div>
+                <button class="btn" onclick="orderProduct('Логотип команды')">Купить</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Раздел Помощи -->
+    <section class="section" id="help">
+        <h2 class="section-title">Помощь и Обучение</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>Анализ ваших демок (Тренировка)</h3>
+                <p>Профессиональный разбор ваших ошибок, разбор тактик, позиционки и крутые фишки с раскидками гранат.</p>
